@@ -260,13 +260,13 @@
         /* Skills Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* Force 4 colonnes */
-            gap: 1.5rem; /* Espace réduit pour s'adapter */
+            grid-template-columns: repeat(4, 1fr); /* 4 colonnes sur PC */
+            gap: 1.5rem;
         }
 
         .skill-box {
             background: var(--bg-card);
-            padding: 3rem 1.5rem; /* Padding réduit sur les côtés */
+            padding: 3rem 1.5rem;
             border-radius: 16px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.03);
@@ -344,7 +344,7 @@
 
         @media (max-width: 600px) {
             .skills-grid {
-                grid-template-columns: 1fr; /* 1 colonne sur téléphone */
+                grid-template-columns: 1fr; /* 1 colonne sur smartphone */
             }
         }
     </style>
@@ -354,7 +354,7 @@
     <canvas id="cyber-bg"></canvas>
 
     <nav>
-        <div class="logo">YD</div>
+        <div class="logo">YD.</div>
         <div class="menu-toggle" id="mobile-menu"><i class="fa-solid fa-bars"></i></div>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
@@ -381,28 +381,35 @@
 
         <section id="experience" class="hidden">
             <h2 class="section-title">Experience & Projects</h2>
+
             <div class="card">
-                <h3>Secure Infrastructure Automation (IaC)</h3>
-                <div class="date-role">Academic Lab | Linux Security & Hardening</div>
-                <p>Designed and deployed hardened Linux environments adhering to CIS benchmarks. Configured advanced storage resilience (<strong>RAID, LVM Snapshots</strong>) and implemented real-time execution prevention (<strong>fapolicyd</strong>). Enforced Mandatory Access Control (MAC) policies via <strong>SELinux/AppArmor</strong> and automated the entire hardening pipeline using <strong>Packer</strong> and <strong>Ansible</strong> for zero initial drift.</p>
+                <h3>Linux Incident Response & Hardening</h3>
+                <div class="date-role">Academic Lab | Blue Team & OS Security</div>
+                <p>Performed incident response on compromised <strong>AlmaLinux 9</strong> systems. Implemented defense-in-depth: service confinement (<strong>SELinux, Systemd</strong>), real-time execution prevention (<strong>fapolicyd</strong>), and file integrity monitoring (<strong>AIDE</strong>). Conducted automated compliance audits based on <strong>CIS benchmarks</strong> using Lynis and OpenSCAP.</p>
             </div>
+
+            <div class="card">
+                <h3>Network Security Lab & MITM Attacks</h3>
+                <div class="date-role">Academic Lab | Network Defense & Pentesting</div>
+                <p>Designed a virtualized Cyber-Lab (Kali, Windows, Linux). Executed and analyzed <strong>Man-In-The-Middle (MITM)</strong> attacks including ARP Poisoning, DNS Spoofing, and DoS. Conducted advanced traffic analysis using <strong>Wireshark</strong> to identify attack signatures and implement countermeasures.</p>
+            </div>
+
+            <div class="card">
+                <h3>Apache Vulnerability Exploitation (CVE-2021-41773)</h3>
+                <div class="date-role">Academic Lab | Red Team & Pentesting</div>
+                <p>Simulated a full attack kill-chain targeting Apache 2.4.49. Performed network reconnaissance with Nmap, exploited <strong>Path Traversal</strong> and <strong>Remote Code Execution (RCE)</strong> vulnerabilities, and successfully established a <strong>Reverse Shell</strong> using Python and Netcat.</p>
+            </div>
+
             <div class="card">
                 <h3>Python Web Application Firewall (WAF)</h3>
-                <div class="date-role">Summer Internship | Groupe Azura | 07/2025 - 08/2025</div>
-                <p>Developed a Python web application firewall to filter and secure HTTP traffic. Features a modular architecture (core, rules, utils) including a main engine, configuration management, and a comprehensive logging system. Executed via a configurable script with a diagnostic debug mode.</p>
+                <div class="date-role">Summer Internship | Groupe Azura | 2025</div>
+                <p>Developed a custom WAF in Python to filter and secure HTTP traffic. Features a modular engine for rule management, detailed logging, and a diagnostic debug mode to analyze real-time threats.</p>
             </div>
+
             <div class="card">
                 <h3>MMY Champions - E-commerce Platform</h3>
                 <div class="date-role">Academic Project | Laravel & Web Security</div>
-                <p>Designed and developed a secure, responsive e-commerce website. Built with Laravel (MVC), Bootstrap, and MySQL with Stripe integration. Implemented active and robust defenses against SQL injections and XSS vulnerabilities.</p>
-            </div>
-            <div class="card">
-                <h3>CTF (Capture The Flag) Competitions</h3>
-                <div class="date-role">Participant | 2 Competitions</div>
-                <ul style="list-style: none;">
-                    <li style="margin-bottom: 10px; position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--accent);">▹</span><strong class="ctf-name">Nexori CTF (Code 212 Center):</strong> Participated in on-site cybersecurity challenges, applying practical penetration testing and defense strategies in a live, competitive environment.</li>
-                    <li style="position: relative; padding-left: 1.5rem;"><span style="position: absolute; left: 0; color: var(--accent);">▹</span><strong class="ctf-name">MAC2026 (Online):</strong> Competed in virtual CTF events, tackling diverse security puzzles and expanding my problem-solving capabilities across various infosec domains.</li>
-                </ul>
+                <p>Built a secure e-commerce platform using Laravel. Implemented active defenses against SQL injections and XSS, integrated Stripe for secure payments, and ensured responsive UI with Bootstrap.</p>
             </div>
         </section>
 
@@ -411,7 +418,7 @@
             <div class="card" style="border-left-color: #0ea5e9;">
                 <h3>Google Cybersecurity Professional Certificate</h3>
                 <div class="date-role">Coursera | Foundations of Cybersecurity</div>
-                <p>Certification validating cybersecurity fundamentals: risk analysis, security frameworks (NIST), utilizing tools like SQL and Python for security, and incident detection.</p>
+                <p>Validation of cybersecurity foundations: NIST frameworks, risk analysis, and incident detection using Python and SQL.</p>
                 <a href="https://coursera.org/share/8951f5976ac3420d1a453851e5ffeef6" target="_blank" class="cert-link">
                     View Official Certificate <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </a>
@@ -425,27 +432,29 @@
                     <i class="fa-solid fa-shield-halved skill-icon"></i>
                     <h3>Cybersecurity</h3>
                     <ul>
+                        <li>Pentest (ARP/DNS Spoofing)</li>
+                        <li>Wireshark Traffic Analysis</li>
+                        <li>Nmap Reconnaissance</li>
                         <li>Applied Cryptography</li>
-                        <li>Firewalling (iptables, nftables)</li>
-                        <li>Pentesting (ARP poisoning, etc.)</li>
                     </ul>
                 </div>
                 <div class="skill-box">
                     <i class="fa-brands fa-linux skill-icon"></i>
                     <h3>Linux Hardening</h3>
                     <ul>
-                        <li><strong>MAC:</strong> SELinux, AppArmor</li>
-                        <li><strong>Audit:</strong> fapolicyd, AIDE</li>
-                        <li><strong>Storage:</strong> RAID, LVM</li>
-                        <li><strong>IaC:</strong> Ansible & Packer</li>
+                        <li>SELinux & AppArmor</li>
+                        <li>fapolicyd & AIDE (FIM)</li>
+                        <li>PAM, ACLs & Capabilities</li>
+                        <li>LVM Snapshots & RAID</li>
                     </ul>
                 </div>
                 <div class="skill-box">
                     <i class="fa-solid fa-network-wired skill-icon"></i>
-                    <h3>Networking & Infra</h3>
+                    <h3>Networking & IAM</h3>
                     <ul>
-                        <li>OSI Model, TCP/IP, Sockets</li>
-                        <li>Routing, DNS, DHCP, HTTPS</li>
+                        <li>OSI, TCP/IP, Routing</li>
+                        <li>Active Directory & LDAP</li>
+                        <li>RADIUS & JWT Tokens</li>
                         <li>Cisco Packet Tracer</li>
                     </ul>
                 </div>
@@ -454,8 +463,9 @@
                     <h3>Development</h3>
                     <ul>
                         <li>Python, C, Java, PHP</li>
-                        <li>JS, TypeScript, HTML/CSS</li>
-                        <li>MySQL, MongoDB</li>
+                        <li>JavaScript & TypeScript</li>
+                        <li>Laravel (MVC), HTML/CSS</li>
+                        <li>MySQL & MongoDB</li>
                     </ul>
                 </div>
             </div>
@@ -467,8 +477,8 @@
                 <div class="timeline-item hidden">
                     <h3>National School of Applied Sciences (ENSAA)</h3>
                     <div class="date-role">Agadir | 09/2022 - Present</div>
-                    <p><strong>Engineering Degree:</strong> Specialization in Information Systems Security and Digital Trust (since 09/2024).<br><br>
-                    <strong>Integrated Preparatory Cycle:</strong> Fundamental training in engineering sciences (09/2022 - 06/2024).</p>
+                    <p><strong>Engineering Degree:</strong> Information Systems Security and Digital Trust (since 09/2024).<br><br>
+                    <strong>Integrated Preparatory Cycle:</strong> Fundamentals in Engineering Sciences (2022-2024).</p>
                 </div>
                 <div class="timeline-item hidden">
                     <h3>High School Diploma in Mathematical Sciences A</h3>
@@ -489,7 +499,6 @@
             icon.classList.toggle('fa-xmark');
         });
 
-        // Close menu when a link is clicked
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
