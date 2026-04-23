@@ -112,7 +112,7 @@
 
         /* Main Layout */
         .container {
-            max-width: 1000px;
+            max-width: 1200px; /* Élargi pour les 4 colonnes */
             margin: 0 auto;
             padding: 0 2rem;
         }
@@ -260,13 +260,13 @@
         /* Skills Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(4, 1fr); /* Force 4 colonnes */
+            gap: 1.5rem; /* Espace réduit pour s'adapter */
         }
 
         .skill-box {
             background: var(--bg-card);
-            padding: 3rem 2rem;
+            padding: 3rem 1.5rem; /* Padding réduit sur les côtés */
             border-radius: 16px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.03);
@@ -277,8 +277,9 @@
 
         .show .skill-box { opacity: 1; transform: translateY(0); }
         .show .skill-box:nth-child(1) { transition-delay: 0.1s; }
-        .show .skill-box:nth-child(2) { transition-delay: 0.3s; }
-        .show .skill-box:nth-child(3) { transition-delay: 0.5s; }
+        .show .skill-box:nth-child(2) { transition-delay: 0.2s; }
+        .show .skill-box:nth-child(3) { transition-delay: 0.3s; }
+        .show .skill-box:nth-child(4) { transition-delay: 0.4s; }
 
         .skill-box:hover {
             transform: translateY(-15px) scale(1.03);
@@ -286,7 +287,13 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.5);
         }
 
-        .skill-icon { font-size: 3.5rem; color: var(--accent); margin-bottom: 2rem; filter: drop-shadow(0 0 10px var(--accent-glow)); }
+        .skill-icon { font-size: 3rem; color: var(--accent); margin-bottom: 1.5rem; filter: drop-shadow(0 0 10px var(--accent-glow)); }
+        
+        .skill-box h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+        
+        .skill-box ul { list-style: none; text-align: left; padding-left: 1rem; }
+        .skill-box ul li { position: relative; margin-bottom: 8px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
+        .skill-box ul li::before { content: '▹'; position: absolute; left: -1rem; color: var(--accent); }
 
         .timeline { position: relative; padding-left: 2.5rem; }
         .timeline::before { content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 2px; background: rgba(16, 185, 129, 0.2); }
@@ -317,6 +324,12 @@
         @keyframes fadeInScale { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
 
         /* Responsive Design */
+        @media (max-width: 1024px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur tablette */
+            }
+        }
+
         @media (max-width: 900px) {
             .menu-toggle { display: block; }
             nav ul {
@@ -328,6 +341,12 @@
             .hero { flex-direction: column-reverse !important; text-align: center; gap: 2rem; margin-top: 80px; }
             .hero-image { width: 220px; height: 220px; }
         }
+
+        @media (max-width: 600px) {
+            .skills-grid {
+                grid-template-columns: 1fr; /* 1 colonne sur téléphone */
+            }
+        }
     </style>
 </head>
 <body>
@@ -335,7 +354,7 @@
     <canvas id="cyber-bg"></canvas>
 
     <nav>
-        <div class="logo">YD.</div>
+        <div class="logo">YD</div>
         <div class="menu-toggle" id="mobile-menu"><i class="fa-solid fa-bars"></i></div>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
@@ -362,6 +381,11 @@
 
         <section id="experience" class="hidden">
             <h2 class="section-title">Experience & Projects</h2>
+            <div class="card">
+                <h3>Secure Infrastructure Automation (IaC)</h3>
+                <div class="date-role">Academic Lab | Linux Security & Hardening</div>
+                <p>Designed and deployed hardened Linux environments adhering to CIS benchmarks. Configured advanced storage resilience (<strong>RAID, LVM Snapshots</strong>) and implemented real-time execution prevention (<strong>fapolicyd</strong>). Enforced Mandatory Access Control (MAC) policies via <strong>SELinux/AppArmor</strong> and automated the entire hardening pipeline using <strong>Packer</strong> and <strong>Ansible</strong> for zero initial drift.</p>
+            </div>
             <div class="card">
                 <h3>Python Web Application Firewall (WAF)</h3>
                 <div class="date-role">Summer Internship | Groupe Azura | 07/2025 - 08/2025</div>
@@ -402,13 +426,23 @@
                     <h3>Cybersecurity</h3>
                     <ul>
                         <li>Applied Cryptography</li>
-                        <li>Firewall Configuration (iptables)</li>
-                        <li>Penetration Testing (ARP poisoning, DNS spoofing, Hijacking)</li>
+                        <li>Firewalling (iptables, nftables)</li>
+                        <li>Pentesting (ARP poisoning, etc.)</li>
+                    </ul>
+                </div>
+                <div class="skill-box">
+                    <i class="fa-brands fa-linux skill-icon"></i>
+                    <h3>Linux Hardening</h3>
+                    <ul>
+                        <li><strong>MAC:</strong> SELinux, AppArmor</li>
+                        <li><strong>Audit:</strong> fapolicyd, AIDE</li>
+                        <li><strong>Storage:</strong> RAID, LVM</li>
+                        <li><strong>IaC:</strong> Ansible & Packer</li>
                     </ul>
                 </div>
                 <div class="skill-box">
                     <i class="fa-solid fa-network-wired skill-icon"></i>
-                    <h3>Networking & Infrastructure</h3>
+                    <h3>Networking & Infra</h3>
                     <ul>
                         <li>OSI Model, TCP/IP, Sockets</li>
                         <li>Routing, DNS, DHCP, HTTPS</li>
